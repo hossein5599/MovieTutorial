@@ -1,0 +1,29 @@
+{
+  "RootNamespace": "MovieTutorial",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "mov.Genre",
+          "Identifier": "Genre",
+          "Module": "MovieDB",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "mov.Movies",
+          "Identifier": "Movie",
+          "Module": "MovieDB",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "5.0.24.0"
+  }
+}
