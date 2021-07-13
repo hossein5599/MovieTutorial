@@ -23,8 +23,12 @@ namespace MovieTutorial.MovieDB.Columns
         public DateTime ReleaseDate { get; set; }
         [ Width(400), AlignRight]
         public Int32 Runtime { get; set; }
-        [Width(100), QuickFilter]
-        public Int32 GenreName { get; set; }
+
+        //[Width(100), QuickFilter]
+        //public Int32 GenreName { get; set; }
+
+        [Width(200) , GenreListFormatter]
+        public List<Int32> GenreList { get; set; }
 
     }
 }

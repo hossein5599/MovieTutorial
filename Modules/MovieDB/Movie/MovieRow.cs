@@ -4,6 +4,7 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
@@ -72,20 +73,31 @@ namespace MovieTutorial.MovieDB.Entities
             set { fields.Kind[this] = (Int32?)value; }
         }
 
-        [DisplayName("Genre"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
-        //[LookupEditor("MovieDB.Genre")]
-        [LookupEditor(typeof(GenreRow), InplaceAdd = true)]
-        public Int32? GenreId
-        {
-            get { return fields.GenreId[this]; }
-            set { fields.GenreId[this] = value; }
-        }
+        //1 - n Between Movie Adn Genre
+        //[DisplayName("Genre"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
+        ////[LookupEditor("MovieDB.Genre")]
+        //[LookupEditor(typeof(GenreRow), InplaceAdd = true)]
+        //public Int32? GenreId
+        //{
+        //    get { return fields.GenreId[this]; }
+        //    set { fields.GenreId[this] = value; }
+        //}
 
-        [DisplayName("Genre"), Expression("g.Name")]
-        public String GenreName
+        //[DisplayName("Genre"), Expression("g.Name")]
+        //public String GenreName
+        //{
+        //    get { return Fields.GenreName[this]; }
+        //    set { Fields.GenreName[this] = value; }
+        //}
+
+        //n-m between movie and genres using moviegenres table
+        [DisplayName("Genres")]
+        [LookupEditor(typeof(GenreRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(MovieGenresRow), "MovieId", "GenreId")]
+        public List<Int32> GenreList
         {
-            get { return Fields.GenreName[this]; }
-            set { Fields.GenreName[this] = value; }
+            get { return Fields.GenreList[this]; }
+            set { Fields.GenreList[this] = value; }
         }
 
         public MovieRow()
@@ -108,8 +120,10 @@ namespace MovieTutorial.MovieDB.Entities
             public DateTimeField ReleaseDate;
             public Int32Field Runtime;
             public Int32Field Kind;
-            public Int32Field GenreId;
-            public StringField GenreName;
+           public ListField<Int32> GenreList;
+
+            // public Int32Field GenreId;
+            // public StringField GenreName;
 
         }
     }

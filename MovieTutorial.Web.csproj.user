@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <TypeScriptCompile Update="Modules\MovieDB\Genre\GenreListFormatter.ts">
+    <TypeScriptCompile Update="Modules\MovieDB\GenreListFormatter.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>

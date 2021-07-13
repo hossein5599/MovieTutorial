@@ -820,13 +820,79 @@ declare namespace MovieTutorial.MovieDB {
         Year: Serenity.IntegerEditor;
         ReleaseDate: Serenity.DateEditor;
         Runtime: Serenity.IntegerEditor;
-        GenreId: Serenity.LookupEditor;
+        GenreList: Serenity.LookupEditor;
         Kind: Serenity.EnumEditor;
     }
     class MovieForm extends Serenity.PrefixedContext {
         static formKey: string;
         private static init;
         constructor(prefix: string);
+    }
+}
+declare namespace MovieTutorial.MovieDB {
+}
+declare namespace MovieTutorial.MovieDB {
+    interface MovieGenresForm {
+        MovieId: Serenity.IntegerEditor;
+        GenreId: Serenity.IntegerEditor;
+    }
+    class MovieGenresForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace MovieTutorial.MovieDB {
+    interface MovieGenresRow {
+        MovieGenreId?: number;
+        MovieId?: number;
+        GenreId?: number;
+        MovieTitle?: string;
+        MovieDescription?: string;
+        MovieStoryline?: string;
+        MovieYear?: number;
+        MovieReleaseDate?: string;
+        MovieRuntime?: number;
+        MovieKind?: number;
+        GenreName?: string;
+    }
+    namespace MovieGenresRow {
+        const idProperty = "MovieGenreId";
+        const localTextPrefix = "MovieDB.MovieGenres";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            MovieGenreId = "MovieGenreId",
+            MovieId = "MovieId",
+            GenreId = "GenreId",
+            MovieTitle = "MovieTitle",
+            MovieDescription = "MovieDescription",
+            MovieStoryline = "MovieStoryline",
+            MovieYear = "MovieYear",
+            MovieReleaseDate = "MovieReleaseDate",
+            MovieRuntime = "MovieRuntime",
+            MovieKind = "MovieKind",
+            GenreName = "GenreName"
+        }
+    }
+}
+declare namespace MovieTutorial.MovieDB {
+    namespace MovieGenresService {
+        const baseUrl = "MovieDB/MovieGenres";
+        function Create(request: Serenity.SaveRequest<MovieGenresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MovieGenresRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MovieGenresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MovieGenresRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "MovieDB/MovieGenres/Create",
+            Update = "MovieDB/MovieGenres/Update",
+            Delete = "MovieDB/MovieGenres/Delete",
+            Retrieve = "MovieDB/MovieGenres/Retrieve",
+            List = "MovieDB/MovieGenres/List"
+        }
     }
 }
 declare namespace MovieTutorial.MovieDB {
@@ -839,8 +905,7 @@ declare namespace MovieTutorial.MovieDB {
         ReleaseDate?: string;
         Runtime?: number;
         Kind?: Web.Modules.MovieDB.Movie.MovieKind;
-        GenreId?: number;
-        GenreName?: string;
+        GenreList?: number[];
     }
     namespace MovieRow {
         const idProperty = "MovieId";
@@ -859,8 +924,7 @@ declare namespace MovieTutorial.MovieDB {
             ReleaseDate = "ReleaseDate",
             Runtime = "Runtime",
             Kind = "Kind",
-            GenreId = "GenreId",
-            GenreName = "GenreName"
+            GenreList = "GenreList"
         }
     }
 }
@@ -3449,6 +3513,11 @@ declare namespace MovieTutorial.Membership {
     }
 }
 declare namespace MovieTutorial.MovieDB {
+    class GenreListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace MovieTutorial.MovieDB {
     class GenreDialog extends Serenity.EntityDialog<GenreRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -3483,7 +3552,10 @@ declare namespace MovieTutorial.MovieDB {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: MovieForm;
+        constructor();
         afterLoadEntity(): void;
+        onDialogOpen(): void;
+        validateBeforeSave(): boolean;
     }
 }
 declare namespace MovieTutorial.MovieDB {
@@ -3497,6 +3569,29 @@ declare namespace MovieTutorial.MovieDB {
         constructor(container: JQuery);
         private getTextService;
         protected getQuickSearchFields(): Serenity.QuickSearchField[];
+    }
+}
+declare namespace MovieTutorial.MovieDB {
+    class MovieGenresDialog extends Serenity.EntityDialog<MovieGenresRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: MovieGenresForm;
+    }
+}
+declare namespace MovieTutorial.MovieDB {
+    class MovieGenresGrid extends Serenity.EntityGrid<MovieGenresRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MovieGenresDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace MovieTutorial.Northwind {
@@ -3654,10 +3749,5 @@ declare namespace MovieTutorial.Northwind {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace MovieTutorial.MovieDB {
-    class GenreListFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
     }
 }

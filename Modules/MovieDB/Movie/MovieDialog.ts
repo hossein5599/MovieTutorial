@@ -14,10 +14,24 @@ namespace MovieTutorial.MovieDB {
 
         protected form = new MovieForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
         afterLoadEntity() {
             super.afterLoadEntity();
 
             
+
+        }
+
+        onDialogOpen() {
+
+        }
+
+
+        validateBeforeSave(): boolean{
+            return super.validateBeforeSave();
 
         }
 

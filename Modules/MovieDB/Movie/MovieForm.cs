@@ -24,7 +24,10 @@ namespace MovieTutorial.MovieDB.Forms
         public Int32 Runtime { get; set; }
 
 
-        public Int32 GenreId { get; set; }
+        //public Int32 GenreId { get; set; }
+
+        
+        public List<Int32> GenreList { get; set; }
 
         public MovieKind Kind { get; set; }
 

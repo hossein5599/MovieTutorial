@@ -38,39 +38,69 @@ namespace MovieTutorial.MovieDB.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
-            return new MyListHandler(Context).Process(connection, request);
+            var test = new MyListHandler(Context).Process(connection, request);
+          //  return new MyListHandler(Context).Process(connection, request);
+
+            return test;
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> 
+        private class MySaveHandler : SaveRequestHandler<MyRow>
         {
             public MySaveHandler(IRequestContext context)
                 : base(context)
             {
+
             }
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+
+                //  Row.CreateDate = DateTime.Now;
+                if (Row.Title != "اکبر")
+                {
+                   // throw new ValidationError("نمیشه اکبر باشه")
+                }
+
+
+                //var movieRows = Connection.List<MovieRow>();
+
+
+            }
+
         }
-        
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> 
+
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
         {
             public MyDeleteHandler(IRequestContext context)
                 : base(context)
             {
             }
+
         }
 
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> 
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
         {
             public MyRetrieveHandler(IRequestContext context)
                 : base(context)
             {
             }
         }
-        
-        private class MyListHandler : ListRequestHandler<MyRow> 
+
+        private class MyListHandler : ListRequestHandler<MyRow>
         {
             public MyListHandler(IRequestContext context)
                 : base(context)
+            { }
+
+
+            protected override void PrepareQuery(SqlQuery query)
             {
+
+
+                base.PrepareQuery(query);
             }
+
+
         }
     }
 }

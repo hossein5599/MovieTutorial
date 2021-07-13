@@ -8,8 +8,7 @@
         ReleaseDate?: string;
         Runtime?: number;
         Kind?: Web.Modules.MovieDB.Movie.MovieKind;
-        GenreId?: number;
-        GenreName?: string;
+        GenreList?: number[];
     }
 
     export namespace MovieRow {
@@ -30,8 +29,7 @@
             ReleaseDate = "ReleaseDate",
             Runtime = "Runtime",
             Kind = "Kind",
-            GenreId = "GenreId",
-            GenreName = "GenreName"
+            GenreList = "GenreList"
         }
     }
 }

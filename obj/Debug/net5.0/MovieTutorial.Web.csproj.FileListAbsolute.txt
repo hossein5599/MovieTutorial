@@ -519,3 +519,4 @@ C:\Users\sadeghi\source\repos\MovieTutorial\MovieTutorial\MovieTutorial.Web\obj\
 C:\Users\sadeghi\source\repos\MovieTutorial\MovieTutorial\MovieTutorial.Web\obj\Debug\net5.0\Razor\Modules\MovieDB\Movie\MovieIndex.cshtml.g.cs
 C:\Users\sadeghi\source\repos\MovieTutorial\MovieTutorial\MovieTutorial.Web\obj\Debug\net5.0\MovieTutorial.Web.csproj.AssemblyReference.cache
 C:\Users\sadeghi\source\repos\MovieTutorial\MovieTutorial\MovieTutorial.Web\obj\Debug\net5.0\Razor\Modules\MovieDB\Genre\GenreIndex.cshtml.g.cs
+C:\Users\sadeghi\source\repos\MovieTutorial\MovieTutorial\MovieTutorial.Web\obj\Debug\net5.0\Razor\Modules\MovieDB\MovieGenres\MovieGenresIndex.cshtml.g.cs

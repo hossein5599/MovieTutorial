@@ -41,6 +41,9 @@
     <PackageReference Include="Serenity.Scripts" Version="5.0.24" />
     <PackageReference Include="Serenity.Demo.ThemeSamples" Version="5.0.20.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\MovieDB\MovieGenres\" />
+  </ItemGroup>
   <Import Project="$(SolutionDir)Serenity\build\submodule.targets" Condition="Exists('$(SolutionDir)Serenity\build\submodule.targets')" />
   <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">
     <CreateItem Include="Modules\**\*.ts;Imports\**\*.ts">
