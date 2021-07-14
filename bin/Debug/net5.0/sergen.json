@@ -24,6 +24,12 @@
           "Identifier": "Movie",
           "Module": "MovieDB",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "mov.Person",
+          "Identifier": "Person",
+          "Module": "MovieDB",
+          "PermissionKey": "Administration:General"
         }
       ]
     }

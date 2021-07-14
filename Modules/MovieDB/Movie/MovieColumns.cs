@@ -27,7 +27,7 @@ namespace MovieTutorial.MovieDB.Columns
         //[Width(100), QuickFilter]
         //public Int32 GenreName { get; set; }
 
-        [Width(200) , GenreListFormatter]
+        [Width(200) , GenreListFormatter,QuickFilter]
         public List<Int32> GenreList { get; set; }
 
     }

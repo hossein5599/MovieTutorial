@@ -5,6 +5,7 @@ using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using MyRepository = MovieTutorial.MovieDB.Repositories.MovieRepository;
 using MyRow = MovieTutorial.MovieDB.Entities.MovieRow;
+using MovieTutorial.Web.Modules.MovieDB.Movie;
 
 namespace MovieTutorial.MovieDB.Endpoints
 {
@@ -37,7 +38,7 @@ namespace MovieTutorial.MovieDB.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, MovieListRequest request)
         {
             return new MyRepository(Context).List(connection, request);
         }

@@ -8748,6 +8748,12 @@ section.content > .s-DataGrid {
 .s-MovieDB-MovieGenresDialog .caption {
   width: 150px;
 }
+.s-MovieDB-PersonDialog > .size {
+  width: 650px;
+}
+.s-MovieDB-PersonDialog .caption {
+  width: 150px;
+}
 .s-MovieDB-MovieDialog > .size {
   width: 650px;
   height: 500px;

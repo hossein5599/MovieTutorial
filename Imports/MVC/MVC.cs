@@ -287,6 +287,11 @@ namespace MVC
                 public const string MovieGenresIndex = "~/Modules/MovieDB/MovieGenres/MovieGenresIndex.cshtml";
             }
 
+            public static class Person
+            {
+                public const string PersonIndex = "~/Modules/MovieDB/Person/PersonIndex.cshtml";
+            }
+
         }
 
         public static class Northwind
