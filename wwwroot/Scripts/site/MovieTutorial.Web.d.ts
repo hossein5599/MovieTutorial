@@ -3647,6 +3647,7 @@ declare namespace MovieTutorial.MovieDB {
         constructor(container: JQuery);
         protected getQuickSearchFields(): Serenity.QuickSearchField[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected onViewSubmit(): boolean;
     }
 }
 declare namespace MovieTutorial.MovieDB {

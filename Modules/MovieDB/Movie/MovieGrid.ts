@@ -92,5 +92,29 @@ namespace MovieTutorial.MovieDB {
 
             return items;
         }
+
+        protected  onViewSubmit() {
+
+            if (!super.onViewSubmit())
+                return false;
+            let request = this.view.params as Serenity.ListRequest;// view.Params;
+            //Q.notifyInfo("Request:" + this.view.params);
+
+            //this.StartDate = $('#Tag1').find('input[name="StartDate"]').val();
+            //this.EndDate = $('#Tag1').find('input[name="EndDate"]').val();
+            //this.Progid = $('#Tag1').find('input[name="Progid"]').val();
+            //this.LocationId = $('#Tag1').find('input[name="LocationId"]').val();
+            //var search: any[] = [];
+
+
+            ////this.view.params = request;
+            //Q.notifyInfo("Program" + this.Progid);
+
+            //Q.notifyInfo("super.onViewSubmit():" + super.onViewSubmit());
+
+           // request.ExcludeColumns = new List<string> { "Notes" }
+            return true;
+
+        }
     }
 }

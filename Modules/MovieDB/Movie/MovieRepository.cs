@@ -3,6 +3,7 @@ using Serenity;
 using Serenity.Data;
 using Serenity.Services;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using MyRow = MovieTutorial.MovieDB.Entities.MovieRow;
 
@@ -10,7 +11,7 @@ namespace MovieTutorial.MovieDB.Repositories
 {
     public class MovieRepository : BaseRepository
     {
-        private static MyRow.RowFields fld => MyRow.Fields;
+        private static MyRow.RowFields Fld => MyRow.Fields;
 
         public MovieRepository(IRequestContext context)
             : base(context)
@@ -37,8 +38,10 @@ namespace MovieTutorial.MovieDB.Repositories
             return new MyRetrieveHandler(Context).Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, MovieListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+
+
             var test = new MyListHandler(Context).Process(connection, request);
           //  return new MyListHandler(Context).Process(connection, request);
 
@@ -55,8 +58,13 @@ namespace MovieTutorial.MovieDB.Repositories
             protected override void ValidateRequest()
             {
                 base.ValidateRequest();
+                //Connection.
 
-                //  Row.CreateDate = DateTime.Now;
+                //if (Row.Title == "+19")
+                //    throw new ValidationError("لطفا بی تربیت نباشید");
+                    
+                    
+                    //  Row.CreateDate = DateTime.Now;
                 if (Row.Title != "اکبر")
                 {
                    // throw new ValidationError("نمیشه اکبر باشه")
@@ -65,6 +73,14 @@ namespace MovieTutorial.MovieDB.Repositories
 
                 //var movieRows = Connection.List<MovieRow>();
 
+
+            }
+
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+
+                
 
             }
 
@@ -87,7 +103,7 @@ namespace MovieTutorial.MovieDB.Repositories
             }
         }
 
-        private class MyListHandler : ListRequestHandler<MyRow , MovieListRequest>
+        private class MyListHandler : ListRequestHandler<MyRow , ListRequest>
         {
             public MyListHandler(IRequestContext context)
                 : base(context)
@@ -96,29 +112,42 @@ namespace MovieTutorial.MovieDB.Repositories
 
             protected override void PrepareQuery(SqlQuery query)
             {
-
+                Request.Take = 10;
 
                 base.PrepareQuery(query);
             }
 
+            
+            
+
             protected override void ApplyFilters(SqlQuery query)
             {
+
+                Request.Take = 10;
+
                 base.ApplyFilters(query);
 
-                if (!Request.Genres.IsEmptyOrNull())
-                {
+                //if (!Request.Genres.IsEmptyOrNull())
+                //{
                     var mg = Entities.MovieGenresRow.Fields.As("mg");
+               // Request.Sort
+                var list = new List<int>()
+                {
+                    1,2,3,4,5,6
+                };
 
+               // Request.Criteria.IsNull
                     query.Where(Criteria.Exists(
                         query.SubQuery()
                             .From(mg)
                             .Select("1")
                             .Where(
-                                mg.MovieId == fld.MovieId &&
-                                mg.GenreId.In(Request.Genres))
+
+                                mg.MovieId == Fld.MovieId &&
+                                mg.GenreId.In(list))
                             .ToString()));
                 }
-            }
+            //}
 
         }
     }
