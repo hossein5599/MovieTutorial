@@ -30,8 +30,17 @@ namespace MovieTutorial.MovieDB {
         }
 
 
-        validateBeforeSave(): boolean{
-            return super.validateBeforeSave();
+        validateBeforeSave(): boolean {
+
+            var res = super.validateBeforeSave();
+
+            // ..... and res
+            if (this.form.Title.value == "safda" && res) {
+                // Q.notifyWarning();
+                return false;
+            }
+
+            return true;
 
         }
 

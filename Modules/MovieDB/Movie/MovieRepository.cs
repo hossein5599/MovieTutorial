@@ -1,4 +1,5 @@
-﻿using MovieTutorial.Web.Modules.MovieDB.Movie;
+﻿using MovieTutorial.MovieDB.Entities;
+using MovieTutorial.Web.Modules.MovieDB.Movie;
 using Serenity;
 using Serenity.Data;
 using Serenity.Services;
@@ -73,6 +74,39 @@ namespace MovieTutorial.MovieDB.Repositories
 
                 //var movieRows = Connection.List<MovieRow>();
 
+
+            }
+
+            protected override void BeforeSave()
+            {
+                base.BeforeSave();
+
+                if (Row.Title == "")
+                {
+                    throw new ValidationError("");
+
+                }
+
+                if (base.IsCreate)
+                {
+                    //var memberID = fld.;
+                    // var eventID = fld.IDEvento;
+                    //    should be this to access your new Entity
+                    //  var memberID = this.Row.Idemember;
+                    // var eventID = this.Row.IDEvento;
+
+
+                    if (!this.Connection.Exists<MovieRow>(MyRow.Fields.Title == this.Row.Title))
+                    {
+                        // do anything you want to do
+                    }
+                    else
+                    {
+                        throw new ValidationError("This  already registered");
+                    }
+
+
+                }
 
             }
 
