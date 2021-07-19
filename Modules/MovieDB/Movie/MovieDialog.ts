@@ -16,7 +16,26 @@ namespace MovieTutorial.MovieDB {
 
         constructor() {
             super();
+                     //this.form.MyOption.change(e => {
+            //    let currentValue = Serenity.EditorUtils.getValue(this.form.MyOption);
+            //    //let currentText = Serenity.EnumFormatter.format(MyEnum, Q.toId(currentValue));
+
+            //    //Q.notifySuccess(`You selected ${currentText}, lookup items will be reloaded`);
+
+            //    // clear old value
+            //    this.form.TestLookup.value = null;
+
+            //    // pass value into lookup editor and update items
+            //    this.form.TestLookup.myId = currentValue;
+            //    this.form.TestLookup.updateItems();
+
+            //    // select first lookup item after changing
+            //    if (this.form.TestLookup.items && this.form.TestLookup.items.length > 0) {
+            //        Serenity.EditorUtils.setValue(this.form.TestLookup, this.form.TestLookup.items[0].id);
+            //    }
+            //});
         }
+
 
         afterLoadEntity() {
             super.afterLoadEntity();
@@ -43,6 +62,8 @@ namespace MovieTutorial.MovieDB {
             return true;
 
         }
+
+        
 
     }
 }

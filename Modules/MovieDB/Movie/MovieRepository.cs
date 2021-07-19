@@ -170,8 +170,24 @@ namespace MovieTutorial.MovieDB.Repositories
                     1,2,3,4,5,6
                 };
 
-               // Request.Criteria.IsNull
-                    query.Where(Criteria.Exists(
+
+                //  Request.Take = 10;
+
+
+                ////if (!Request.Genres.IsEmptyOrNull())
+                ////{
+                //var cr = Entities.CityRow.Fields.As("cr");
+                //// Request.Sort
+                //var list = new List<int>()
+                //{
+                //    1,2,3,4,5,6
+                //};
+
+                //// Request.Criteria.IsNull
+                //query.Where(new Criteria("Name") == "");
+
+                // Request.Criteria.IsNull
+                query.Where(Criteria.Exists(
                         query.SubQuery()
                             .From(mg)
                             .Select("1")
