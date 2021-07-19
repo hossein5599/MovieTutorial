@@ -123,7 +123,7 @@ namespace MovieTutorial.MovieDB {
 //    import fld = GeolocationRow.Fields;
 
 //    let filter = Q.tryFirst(filters, x => x.field == fld.IsActive);
-
+        hhhjghj
 //    if (filter != null) {
 //        filter.handler = h => {
 //            if (h.active) {
