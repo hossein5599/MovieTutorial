@@ -118,6 +118,34 @@ namespace MovieTutorial.MovieDB {
         //    return filters;
         //}
 
+        
+//let filters = super.getQuickFilters();
+//    import fld = GeolocationRow.Fields;
+
+//    let filter = Q.tryFirst(filters, x => x.field == fld.IsActive);
+
+//    if (filter != null) {
+//        filter.handler = h => {
+//            if (h.active) {
+//                h.request.Criteria = Serenity.Criteria.and(
+//                    h.request.Criteria,
+//                    [[fld.IsActive], '=', true])
+//            }
+//        }
+//    } else {
+//        filters.push({
+//            field: fld.IsActive,
+//            type: Serenity.BooleanEditor,
+//            handler: h => {
+//                if (h.active) {
+//                    h.request.Criteria = Serenity.Criteria.and(
+//                        h.request.Criteria,
+//                        [[fld.IsActive], '=', true])
+//                }
+//            }
+//        })
+//    }
+
 
         protected  onViewSubmit() {
 
