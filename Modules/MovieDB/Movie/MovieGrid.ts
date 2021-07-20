@@ -75,23 +75,65 @@ namespace MovieTutorial.MovieDB {
             ];
         }
 
-        protected getQuickFilters() {
-            let items = super.getQuickFilters();
+        //WOrking For bringing filters to quick filter
+        //protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
+        //    //Gets the Filters defined in the Columns or in parent grids.
 
-           // debugger;
+        //    let filters = super.getQuickFilters();
+
+        //    //Insert a new checkbox filter for seeing if the column DeletedOn (date) is not Null
+        //    //Show or hide deleted items option
+        //    filters.push({
+        //        field: CityRow.Fields.Crowded,
+        //        type: Serenity.EnumEditor,
+        //        title: "Crowd",
+        //        options: {
+        //            enumType: CrowdEnum
+        //        },
+        //        handler: h => {
+        //            // h.active = !!h.value;
+
+        //            if (h.active) {
+        //                h.request.Criteria = Serenity.Criteria.and(
+        //                    h.request.Criteria,
+        //                    [[fld.Crowded], '=', h.value]
+        //                )
+        //            }
+
+        //            //if (h.active) {
+        //            //    h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
+        //            //        ['is not null', [EntityRow.Fields.DeletedOn]]);
+        //            //} else {
+        //            //    h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
+        //            //        ['is null', [EntityRow.Fields.DeletedOn]]);
+        //            //}
+        //        }
+        //    });
+
+        //    return filters;
+        //}
+
+
+
+        //protected getQuickFilters() {
+        //    let items = super.getQuickFilters();
+
+        //   // debugger;
             
-            var genreListFilter = Q.first(items, x =>
-                x.field == MovieRow.Fields.GenreList);
+        //    var genreListFilter = Q.first(items, x =>
+        //        x.field == MovieRow.Fields.GenreList);
 
-            genreListFilter.handler = h => {
-                var request = (h.request as MovieListRequest);
-                var values = (h.widget as Serenity.LookupEditor).values;
-                request.Genres = values.map(x => parseInt(x, 10));
-                h.handled = true;
-            };
+        //    genreListFilter.handler = h => {
+        //        var request = (h.request as MovieListRequest);
+        //        var values = (h.widget as Serenity.LookupEditor).values;
+        //        request.Genres = values.map(x => parseInt(x, 10));
+        //        h.handled = true;
+        //    };
 
-            return items;
-        }
+        //    return items;
+        //}
+
+      
 
         //protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
         //    //Gets the Filters defined in the Columns or in parent grids.
@@ -123,7 +165,6 @@ namespace MovieTutorial.MovieDB {
 //    import fld = GeolocationRow.Fields;
 
 //    let filter = Q.tryFirst(filters, x => x.field == fld.IsActive);
-        hhhjghj
 //    if (filter != null) {
 //        filter.handler = h => {
 //            if (h.active) {
